@@ -100,6 +100,8 @@
 #     print(obj_tree_class.get_information(parent_class_name, children_class_name))
 # f.close()
 
+
+#работает из под клавиатуры
 class TreeClass :
     def __init__ ( self , arg_count_classes ) :
         self.tree_classes = dict()
