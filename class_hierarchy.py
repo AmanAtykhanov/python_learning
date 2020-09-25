@@ -1,7 +1,7 @@
 class TreeClass:
-    def __init__(self, arg1):
+    def __init__(self, count_classes):
         self.tree_classes = dict()
-        self.count_classes = arg1
+        self.count_classes = count_classes
         self.answer = ''
 
     def create(self, children_name_class):
@@ -11,22 +11,17 @@ class TreeClass:
         self.tree_classes[children_name_class].update(ls_parents_class)
 
     def get_information(self, parent_class_name, children_class_name):
-        self.answer = 'No'
-        self.find_realation(parent_class_name, children_class_name)
-        return self.answer
+        return self.find_relation(parent_class_name, children_class_name)
 
-    def find_realation(self, parent_class_name, children_class_name):
-        try:
-            ls_parents = self.tree_classes[children_class_name]
-            if parent_class_name == children_class_name or parent_class_name in ls_parents:
-                self.answer = 'Yes'
-                return
-            for parent in ls_parents:
-                self.find_realation(parent_class_name, parent)
-                if self.answer == 'Yes':
-                    return
-        except:
-            return
+    def find_relation(self, parent_class_name, children_class_name):
+        ls_parents = self.tree_classes[children_class_name]
+        if parent_class_name == children_class_name or parent_class_name in ls_parents:
+            return 'Yes'
+        for parent in ls_parents:
+            if self.find_relation(parent_class_name, parent) == 'Yes':
+                return 'Yes'
+        return 'No'
+
 
     def key_board_input_classes(self):
         for _ in range(count_class):
@@ -45,7 +40,7 @@ class TreeClass:
         for _ in range(count_request):
             parent_class_name, children_class_name = input().split()
             print(self.get_information(parent_class_name, children_class_name))
-
+            
 
 count_class = int(input())
 obj_tree_class = TreeClass(count_class)
