@@ -2,7 +2,6 @@ class TreeClass:
     def __init__(self, count_classes):
         self.tree_classes = dict()
         self.count_classes = count_classes
-        self.answer = ''
 
     def create(self, children_name_class):
         self.tree_classes[children_name_class] = set()
@@ -39,7 +38,7 @@ class TreeClass:
         count_request = int(input())
         for _ in range(count_request):
             parent_class_name, children_class_name = input().split()
-            print(self.get_information(parent_class_name, children_class_name))
+            print(self.find_relation(parent_class_name, children_class_name))
             
 
 count_class = int(input())
