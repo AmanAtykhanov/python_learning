@@ -9,9 +9,6 @@ class TreeClass:
     def put_class(self, children_name_class, ls_parents_class = []):
         self.tree_classes[children_name_class].update(ls_parents_class)
 
-    def get_information(self, parent_class_name, children_class_name):
-        return self.find_relation(parent_class_name, children_class_name)
-
     def find_relation(self, parent_class_name, children_class_name):
         ls_parents = self.tree_classes[children_class_name]
         if parent_class_name == children_class_name or parent_class_name in ls_parents:
